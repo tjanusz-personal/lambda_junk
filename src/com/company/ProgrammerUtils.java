@@ -1,7 +1,6 @@
 package com.company;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -40,10 +39,29 @@ public class ProgrammerUtils {
         return programmers;
     }
 
+    public Map<String, List<Programmer>> groupProgrammersByGender(List<Programmer> programmers) {
+        return programmers.stream().collect(Collectors.groupingBy(Programmer::getGender));
+    }
+
     public int totalSalaryForProgrammers(List<Programmer> programmers, Predicate<Programmer> predicate) {
         return programmers.stream().filter(predicate)
                 .map(Programmer::getSalary)
                 .reduce(0, (a, b) -> a + b);
+    }
+
+    public List<Programmer> findTopProgrammers(List<Programmer> programmers, Predicate<Programmer> predicate,
+                                                  Comparator<Programmer> sortOrder, int limit) {
+        List<Programmer> topTwo = programmers.stream().filter(predicate)
+                .sorted(sortOrder)
+                .limit(limit)
+                .collect(Collectors.toList());
+        return topTwo;
+    }
+
+    public String findAllProgrammersWithAddresses(List<Programmer> programmers) {
+        Predicate<Programmer> hasAddress = (programmer -> programmer.getAddress().isPresent());
+        return programmers.stream().filter(hasAddress).map(Programmer::getFirstName)
+                .reduce((acc, item) -> acc + " " + item).get();
     }
 
     public void throwNamedEx(String message) throws Exception {

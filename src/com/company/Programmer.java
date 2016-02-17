@@ -1,8 +1,13 @@
 package com.company;
 
+import java.util.Optional;
+
 public class Programmer {
     private String firstName, lastName, job, gender;
     private int salary, age;
+    private Optional<Address> address = Optional.empty();
+
+    public Programmer() { }
 
     public Programmer(String firstName, String lastName, String job, String gender, int age, int salary)       {
         this.firstName = firstName;
@@ -12,6 +17,9 @@ public class Programmer {
         this.job = job;
         this.salary = salary;
     }
+
+    public Optional<Address> getAddress() { return address; }
+    public void setAddress(Optional<Address> address) { this.address = address; }
 
     public String getFirstName() {
         return firstName;

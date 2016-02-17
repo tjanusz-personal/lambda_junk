@@ -6,10 +6,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -51,7 +48,7 @@ public class ProgrammerUtilsTest {
     }
 
     @Test
-    public void testAllProgrammersAreOlderThan20() throws Exception {
+    public void testAllProgrammersMatchReturnsTrueForAgePredicate() throws Exception {
         Predicate<Programmer> ageFilter = (p) -> (p.getAge() > 20);
         Assert.assertThat(utils.allProgrammersMatch(this.javaProgrammers, ageFilter), is(true));
     }
@@ -128,5 +125,41 @@ public class ProgrammerUtilsTest {
         utils.throwNamedEx("Unit Test");
     }
 
+    @Test
+    public void testGroupProgrammersByGenderReturnsCorrectBreakdown() {
+        Map<String, List<Programmer>> programmersByGender =  utils.groupProgrammersByGender(this.javaProgrammers);
+        assertThat(programmersByGender.get("male").size(), equalTo(3));
+        assertThat(programmersByGender.get("female").size(), equalTo(1));
+    }
+
+    @Test
+    public void testFindTopTwoProgrammersReturnsTopTwoSalaried() {
+        Comparator<Programmer> reverseSort = Collections.reverseOrder(Comparator.comparingInt(Programmer::getSalary));
+        Predicate<Programmer> maleProgrammers = (programmer -> programmer.getGender().equals("male"));
+        List<Programmer> topTwo = utils.findTopProgrammers(this.javaProgrammers, maleProgrammers, reverseSort, 2);
+        String firstNames = utils.returnFirstNamesOnlyAsString(topTwo);
+        assertThat(firstNames, equalTo("Tim Jeremiah"));
+    }
+
+    @Test
+    public void testFindTopTwoCheapestSalariedProgrammers() {
+        Comparator<Programmer> reverseSort = Comparator.comparingInt(Programmer::getSalary);
+        Predicate<Programmer> maleProgrammers = (programmer -> programmer.getJob().equals("Java programmer"));
+        List<Programmer> topTwo = utils.findTopProgrammers(this.javaProgrammers, maleProgrammers, reverseSort, 2);
+        String firstNames = utils.returnFirstNamesOnlyAsString(topTwo);
+        assertThat(firstNames, equalTo("Aaron Terry"));
+    }
+
+    @Test
+    public void testFindAllProgrammersWithAddressesReturnsCorrectNames() {
+        Programmer programmer = new Programmer("Tim", "Janusz", "Java programmer", "male", 33, 2000);
+        Programmer programmer2 = new Programmer("Joe", "Jones", "Java programmer", "male", 22, 1000);
+        programmer.setAddress(Optional.of(new Address()));
+        List<Programmer> programmersWithAddresses = new ArrayList<>();
+        programmersWithAddresses.add(programmer);
+        programmersWithAddresses.add(programmer2);
+        String names = utils.findAllProgrammersWithAddresses(programmersWithAddresses);
+        assertThat(names, equalTo("Tim"));
+    }
 
 }
