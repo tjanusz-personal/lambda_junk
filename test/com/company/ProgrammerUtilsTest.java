@@ -162,4 +162,25 @@ public class ProgrammerUtilsTest {
         assertThat(names, equalTo("Tim"));
     }
 
+    @Test
+    public void totalForProgrammersReturnsCorrectResultsForSalary() {
+        Integer[][] scenarios = { {20, 6000}, {40, 1000}, { 30, 4500} };
+        for (Integer[] scenario: scenarios) {
+            Predicate<Programmer> ageFilter = (p) -> (p.getAge() > scenario[0]);
+            int salaryTotal = utils.totalForProgrammers(this.javaProgrammers, ageFilter, Programmer::getSalary);
+            Assert.assertThat(salaryTotal, equalTo(scenario[1]));
+        }
+    }
+
+    @Test
+    public void totalForProgrammersReturnsCorrectResultsForAge() {
+        int ageTotal = utils.totalForProgrammers(this.javaProgrammers, x -> true, Programmer::getAge);
+        Assert.assertThat(ageTotal, equalTo(132));
+    }
+
+    @Test
+    public void totalForProgrammersReturnsCorrectResultsForAgeWithNullPredicate() {
+        int ageTotal = utils.totalForProgrammers(this.javaProgrammers, null, Programmer::getAge);
+        Assert.assertThat(ageTotal, equalTo(132));
+    }
 }

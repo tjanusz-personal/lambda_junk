@@ -1,6 +1,10 @@
 package com.company;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -66,6 +70,15 @@ public class ProgrammerUtils {
 
     public void throwNamedEx(String message) throws Exception {
         throw new Exception(message);
+    }
+
+    public int totalForProgrammers(List<Programmer> programmers, Predicate<Programmer> predicate,
+                                   Function<Programmer,Integer> functionToCall) {
+        // support null Predicates using ternary operator to substitute forced true lambda
+        Predicate<Programmer> calledPredicate = (predicate == null) ? x -> true : predicate;
+        return programmers.stream().filter(calledPredicate)
+                .map(functionToCall)
+                .reduce(0, (a, b) -> a + b);
     }
 
 }

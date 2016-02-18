@@ -6,7 +6,6 @@ import org.junit.Test;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -35,11 +34,6 @@ public class Java8MiscTests {
         System.out.println(strings);
         Collections.sort(strings, String::compareToIgnoreCase);
         System.out.println(strings);
-    }
-
-    @Test
-    public void messWithJava8DateTime() {
-        System.out.println(LocalDateTime.now().plusHours(2));
     }
 
     @Test
@@ -80,5 +74,6 @@ public class Java8MiscTests {
         String state = optProgrammer.flatMap(Programmer::getAddress).filter(hasStatePA).map(Address::getState).orElse("Unk");
         assertThat(state, equalTo("Unk"));
     }
+
 
 }
