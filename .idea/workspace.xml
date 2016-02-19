@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8a8153c-768b-49ee-9639-7511f27a320c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/com/company/Java8DateTimeTests.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/ProgrammerUtils.java" afterPath="$PROJECT_DIR$/src/com/company/ProgrammerUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/company/Java8MiscTests.java" afterPath="$PROJECT_DIR$/test/com/company/Java8MiscTests.java" />
@@ -31,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ProgrammerUtils.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProgrammerUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/ProgrammerUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.56">
-              <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="45" column="43" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -43,11 +42,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProgrammerUtilsTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/com/company/ProgrammerUtilsTest.java">
+      <file leaf-file-name="Java8MiscTests.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/com/company/Java8MiscTests.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="185" column="1" selection-start-line="185" selection-start-column="1" selection-end-line="185" selection-end-column="1" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#3223#3231#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProgrammerUtilsTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/com/company/ProgrammerUtilsTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.44">
+              <caret line="142" column="79" selection-start-line="142" selection-start-column="4" selection-end-line="142" selection-end-column="79" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -97,8 +108,8 @@
         <option value="$PROJECT_DIR$/src/com/company/Programmer.java" />
         <option value="$PROJECT_DIR$/test/com/company/Java8DateTimeTests.java" />
         <option value="$PROJECT_DIR$/test/com/company/Java8MiscTests.java" />
-        <option value="$PROJECT_DIR$/test/com/company/ProgrammerUtilsTest.java" />
         <option value="$PROJECT_DIR$/src/com/company/ProgrammerUtils.java" />
+        <option value="$PROJECT_DIR$/test/com/company/ProgrammerUtilsTest.java" />
       </list>
     </option>
   </component>
@@ -234,7 +245,7 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.ProgrammerUtilsTest">
-    <configuration default="false" name="ProgrammerUtilsTest.totalForProgrammersReturnsCorrectResults" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Java8MiscTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.company.*" />
@@ -245,8 +256,34 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.company" />
-      <option name="MAIN_CLASS_NAME" value="com.company.ProgrammerUtilsTest" />
-      <option name="METHOD_NAME" value="totalForProgrammersReturnsCorrectResults" />
+      <option name="MAIN_CLASS_NAME" value="com.company.Java8MiscTests" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="Java8MiscTests.testComparableStringsReverseSortOrderUsingLambda" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.company.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="lambdaJunk" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.company" />
+      <option name="MAIN_CLASS_NAME" value="com.company.Java8MiscTests" />
+      <option name="METHOD_NAME" value="testComparableStringsReverseSortOrderUsingLambda" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
@@ -260,7 +297,33 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="ProgrammerUtilsTest.totalForProgrammersReturnsCorrectResultsUsingAge" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="com.company in lambdaJunk" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.company.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="lambdaJunk" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.company" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ProgrammerUtilsTest.returnsFirstNamesMatchingFirstLetterOfLastNameCorrectly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.company.*" />
@@ -272,7 +335,7 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.company" />
       <option name="MAIN_CLASS_NAME" value="com.company.ProgrammerUtilsTest" />
-      <option name="METHOD_NAME" value="totalForProgrammersReturnsCorrectResultsUsingAge" />
+      <option name="METHOD_NAME" value="returnsFirstNamesMatchingFirstLetterOfLastNameCorrectly" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
@@ -300,58 +363,6 @@
       <option name="MAIN_CLASS_NAME" value="com.company.ProgrammerUtilsTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="ProgrammerUtilsTest.totalForProgrammersReturnsCorrectResultsForAge" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.company.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="lambdaJunk" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.company" />
-      <option name="MAIN_CLASS_NAME" value="com.company.ProgrammerUtilsTest" />
-      <option name="METHOD_NAME" value="totalForProgrammersReturnsCorrectResultsForAge" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="ProgrammerUtilsTest.totalForProgrammersReturnsCorrectResultsForAgeWithNullPredicate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.company.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="lambdaJunk" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.company" />
-      <option name="MAIN_CLASS_NAME" value="com.company.ProgrammerUtilsTest" />
-      <option name="METHOD_NAME" value="totalForProgrammersReturnsCorrectResultsForAgeWithNullPredicate" />
-      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
@@ -599,19 +610,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.ProgrammerUtilsTest.totalForProgrammersReturnsCorrectResults" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.ProgrammerUtilsTest.totalForProgrammersReturnsCorrectResultsUsingAge" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.ProgrammerUtilsTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.ProgrammerUtilsTest.totalForProgrammersReturnsCorrectResultsForAge" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.ProgrammerUtilsTest.totalForProgrammersReturnsCorrectResultsForAgeWithNullPredicate" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.Java8MiscTests" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.Java8MiscTests.testComparableStringsReverseSortOrderUsingLambda" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.com.company in lambdaJunk" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.ProgrammerUtilsTest.returnsFirstNamesMatchingFirstLetterOfLastNameCorrectly" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ProgrammerUtilsTest" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.ProgrammerUtilsTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.ProgrammerUtilsTest.totalForProgrammersReturnsCorrectResultsForAgeWithNullPredicate" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ProgrammerUtilsTest.totalForProgrammersReturnsCorrectResultsForAge" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.ProgrammerUtilsTest.totalForProgrammersReturnsCorrectResultsUsingAge" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.ProgrammerUtilsTest.totalForProgrammersReturnsCorrectResults" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ProgrammerUtilsTest.returnsFirstNamesMatchingFirstLetterOfLastNameCorrectly" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.com.company in lambdaJunk" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.Java8MiscTests" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.Java8MiscTests.testComparableStringsReverseSortOrderUsingLambda" />
       </list>
     </recent_temporary>
   </component>
@@ -629,35 +640,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ProgrammerUtilsTest - 2016.02.18 at 15h 15m 03s.xml">
+    <history-entry file="Java8MiscTests - 2016.02.19 at 11h 29m 56s.xml">
+      <configuration name="Java8MiscTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Java8MiscTests - 2016.02.19 at 11h 30m 42s.xml">
+      <configuration name="Java8MiscTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Java8MiscTests_testComparableStringsReverseSortOrderUsingLambda - 2016.02.19 at 11h 29m 28s.xml">
+      <configuration name="Java8MiscTests.testComparableStringsReverseSortOrderUsingLambda" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Java8MiscTests_testComparableStringsSortOrderUsingComparator - 2016.02.19 at 11h 28m 18s.xml">
+      <configuration name="Java8MiscTests.testComparableStringsSortOrderUsingComparator" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Java8MiscTests_testComparableStringsSortOrderUsingComparator - 2016.02.19 at 11h 28m 29s.xml">
+      <configuration name="Java8MiscTests.testComparableStringsSortOrderUsingComparator" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ProgrammerUtilsTest - 2016.02.19 at 15h 45m 05s.xml">
       <configuration name="ProgrammerUtilsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProgrammerUtilsTest - 2016.02.18 at 15h 17m 53s.xml">
+    <history-entry file="ProgrammerUtilsTest - 2016.02.19 at 15h 48m 07s.xml">
       <configuration name="ProgrammerUtilsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProgrammerUtilsTest - 2016.02.18 at 15h 18m 37s.xml">
+    <history-entry file="ProgrammerUtilsTest - 2016.02.19 at 15h 49m 55s.xml">
       <configuration name="ProgrammerUtilsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProgrammerUtilsTest - 2016.02.18 at 15h 22m 23s.xml">
-      <configuration name="ProgrammerUtilsTest" configurationId="JUnit" />
+    <history-entry file="ProgrammerUtilsTest_returnsFirstNamesMatchingFirstLetterOfLastNameCorrectly - 2016.02.19 at 15h 44m 00s.xml">
+      <configuration name="ProgrammerUtilsTest.returnsFirstNamesMatchingFirstLetterOfLastNameCorrectly" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProgrammerUtilsTest - 2016.02.18 at 15h 22m 32s.xml">
-      <configuration name="ProgrammerUtilsTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ProgrammerUtilsTest - 2016.02.18 at 15h 23m 35s.xml">
-      <configuration name="ProgrammerUtilsTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ProgrammerUtilsTest - 2016.02.18 at 15h 23m 36s.xml">
-      <configuration name="ProgrammerUtilsTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ProgrammerUtilsTest_totalForProgrammersReturnsCorrectResultsForAge - 2016.02.18 at 15h 16m 23s.xml">
-      <configuration name="ProgrammerUtilsTest.totalForProgrammersReturnsCorrectResultsForAge" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ProgrammerUtilsTest_totalForProgrammersReturnsCorrectResultsForAgeWithNullPredicate - 2016.02.18 at 15h 18m 32s.xml">
-      <configuration name="ProgrammerUtilsTest.totalForProgrammersReturnsCorrectResultsForAgeWithNullPredicate" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ProgrammerUtilsTest_totalForProgrammersReturnsCorrectResultsUsingAge - 2016.02.18 at 15h 14m 04s.xml">
-      <configuration name="ProgrammerUtilsTest.totalForProgrammersReturnsCorrectResultsUsingAge" configurationId="JUnit" />
+    <history-entry file="com_company_in_lambdaJunk - 2016.02.19 at 15h 39m 58s.xml">
+      <configuration name="com.company in lambdaJunk" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -671,7 +682,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3288889" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3288889" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21522693" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -843,26 +854,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/com/company/Java8MiscTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64">
-          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/company/ProgrammerUtilsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="185" column="1" selection-start-line="185" selection-start-column="1" selection-end-line="185" selection-end-column="1" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#3223#3231#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/ProgrammerUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56">
-          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="43" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/company/ProgrammerUtilsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44">
+          <caret line="142" column="79" selection-start-line="142" selection-start-column="4" selection-end-line="142" selection-end-column="79" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

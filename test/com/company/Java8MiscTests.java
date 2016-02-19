@@ -6,15 +6,14 @@ import org.junit.Test;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.*;
+import java.util.function.*;
 
+import static junit.framework.TestCase.assertFalse;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class Java8MiscTests {
 
@@ -73,6 +72,88 @@ public class Java8MiscTests {
         Predicate<Address> hasStatePA = (address -> "PA".equalsIgnoreCase(address.getState()));
         String state = optProgrammer.flatMap(Programmer::getAddress).filter(hasStatePA).map(Address::getState).orElse("Unk");
         assertThat(state, equalTo("Unk"));
+    }
+
+    public static List<String> greetFolks(Function<String, String> greeter) {
+        List<String> greetings = new ArrayList<String>();
+        for(String name : Arrays.asList("Alice", "Bob", "Cathy")) {
+            greetings.add(greeter.apply(name));
+        }
+        return greetings;
+    }
+
+    @Test
+    public void testLambdaBiFunctions() {
+        BiFunction<String, String, String> concat = (a, b) -> a + b;
+        List<String> greetings = greetFolks(whom -> concat.apply(" Hello ", whom));
+
+        StringBuffer resultString = new StringBuffer();
+        greetings.forEach(greeting -> resultString.append(greeting));
+        assertThat(resultString.toString().trim(), equalTo("Hello Alice Hello Bob Hello Cathy"));
+    }
+
+    @Test
+    public void testConsumerFunctionInterface() {
+        StringBuffer buffer = new StringBuffer();
+        Consumer<String> doGreet = name -> buffer.append(" Hello " + name);
+        for (String name : Arrays.asList("Alice", "Bob", "Cathy")) {
+            doGreet.accept(name);  // tells consumer to do its method
+        }
+        assertThat(buffer.toString().trim(), equalTo("Hello Alice Hello Bob Hello Cathy"));
+    }
+
+    @Test
+    public void testBinaryOperator() {
+        BinaryOperator<String> concat = (left, right) -> left + right;
+        assertThat(concat.apply("Hello ", "World"), equalTo("Hello World"));
+    }
+
+    @Test
+    public void testUnaryOperator() {
+        UnaryOperator<String> upcase = str -> str.toUpperCase();
+        assertThat(upcase.apply("Hello"), equalTo("HELLO"));
+    }
+
+    @Test
+    public void testPredicateSingleArgument() {
+        Predicate<String> notNullOrEmpty = s -> (s != null) && (s.length() > 0);
+        assertTrue(notNullOrEmpty.test("Hello"));
+        assertFalse(notNullOrEmpty.test(""));
+    }
+
+    @Test
+    public void testBiPredicateTwoArguments() {
+        BiPredicate<String, String> notNull = (string1, string2) -> (string1 != null) && (string2 != null);
+        assertTrue(notNull.test("","Hello"));
+        assertFalse(notNull.test(null, null));
+    }
+
+    private String stringify(List<String> stringList) {
+        String longString = stringList.stream().map(Object::toString).reduce((t,u) -> t + " " + u).get();
+        return longString;
+    }
+
+    @Test
+    public void testComparableStringsReverseSortOrderUsingLambda() {
+        List<String> stringList = Arrays.asList(new String[] { "Goodbye", "Hello" });
+        stringList.sort( (x,y) -> y.compareToIgnoreCase(x) );
+        assertThat(stringify(stringList), equalTo("Hello Goodbye"));
+    }
+
+    @Test
+    public void testComparableStringsSortOrderUsingComparator() {
+        Comparator<String> stdSort = String::compareToIgnoreCase;
+        List<String> stringList = Arrays.asList(new String[] { "Hello", "Goodbye" });
+        stringList.sort(stdSort);
+        assertThat(stringify(stringList), equalTo("Goodbye Hello"));
+    }
+
+    @Test
+    public void testComparableStringsReverseSortOrderUsingComparator() {
+        Comparator<String> reverseSort = Collections.reverseOrder(String::compareToIgnoreCase);
+        List<String> stringList = Arrays.asList(new String[] { "Hello", "Goodbye" });
+        stringList.sort(reverseSort);
+        assertThat(stringify(stringList), equalTo("Hello Goodbye"));
     }
 
 

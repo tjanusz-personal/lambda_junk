@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class ProgrammerUtils {
 
-    public List<Programmer> findProgrammersBy(List<Programmer> programmers, Predicate<Programmer> predicate) {
+    public List<Programmer> filterProgrammersBy(List<Programmer> programmers, Predicate<Programmer> predicate) {
         List<Programmer> filteredProgrammers = programmers.stream().filter(predicate).collect(Collectors.toList());
         return filteredProgrammers;
     }
@@ -43,6 +43,7 @@ public class ProgrammerUtils {
         return programmers;
     }
 
+    // TODO: Add in predicate for filtering
     public Map<String, List<Programmer>> groupProgrammersByGender(List<Programmer> programmers) {
         return programmers.stream().collect(Collectors.groupingBy(Programmer::getGender));
     }

@@ -34,16 +34,16 @@ public class ProgrammerUtilsTest {
     }
 
     @Test
-    public void testFindProgrammersByAgeReturnsCorrectResults() throws Exception {
+    public void testFilterProgrammersByAgeReturnsCorrectResults() throws Exception {
         Predicate<Programmer> ageFilter = (programmer -> programmer.getAge() > 30);
-        List<Programmer> resultList = utils.findProgrammersBy(javaProgrammers, ageFilter);
+        List<Programmer> resultList = utils.filterProgrammersBy(javaProgrammers, ageFilter);
         assertThat(resultList.size(), equalTo(3));
     }
 
     @Test
-    public void testFindProgrammersByFirstNameStartingWithLetterTReturnsCorrectResults() throws Exception {
+    public void testFilterProgrammersByFirstNameStartingWithLetterTReturnsCorrectResults() throws Exception {
         Predicate<Programmer> ageFilter = (programmer -> programmer.getFirstName().startsWith("T"));
-        List<Programmer> resultList = utils.findProgrammersBy(javaProgrammers, ageFilter);
+        List<Programmer> resultList = utils.filterProgrammersBy(javaProgrammers, ageFilter);
         assertThat(resultList.size(), equalTo(2));
     }
 
@@ -74,20 +74,27 @@ public class ProgrammerUtilsTest {
     }
 
     @Test
-    public void returnsFirstNamesAsString() {
+    public void returnsFirstNamesOnlyAsStringReturnsCorrectString() {
         String firstNames = utils.returnFirstNamesOnlyAsString(javaProgrammers);
         Assert.assertThat(firstNames, equalTo("Aaron Terry Jeremiah Tim"));
     }
 
     @Test
-    public void returnsFirstNamesWithFirstLetterMatchesLetterCorrectly() {
+    public void returnsFirstNamesMatchingFirstLetterCorrectly() {
         Predicate<Programmer> nameFilter = (p) -> (p.getFirstName().startsWith("T"));
         String firstNames = utils.returnFirstNamesMatching(javaProgrammers, nameFilter);
         Assert.assertThat(firstNames, equalTo("Terry Tim"));
     }
 
     @Test
-    public void increasesEachProgrammerSalaryBy100Dollars() {
+    public void returnsFirstNamesMatchingFirstLetterOfLastNameCorrectly() {
+        Predicate<Programmer> nameFilter = (p) -> (p.getLastName().startsWith("J"));
+        String firstNames = utils.returnFirstNamesMatching(javaProgrammers, nameFilter);
+        Assert.assertThat(firstNames, equalTo("Tim"));
+    }
+
+    @Test
+    public void increasesProgrammerSalaryBy100DollarsModifiesProgrammersInListCorrectly() {
         List<Programmer> programmers = utils.increaseProgrammerSalaryByAmount(javaProgrammers, 100);
         List<Integer> expectedAmounts = Arrays.asList(new Integer[] { 1100, 1600, 1600, 2100 });
         List<Integer> actualAmounts = programmers.stream().map(Programmer::getSalary).collect(Collectors.toList());
@@ -133,21 +140,24 @@ public class ProgrammerUtilsTest {
     }
 
     @Test
-    public void testFindTopTwoProgrammersReturnsTopTwoSalaried() {
-        Comparator<Programmer> reverseSort = Collections.reverseOrder(Comparator.comparingInt(Programmer::getSalary));
+    public void testGroupProgrammersByGenderFilteredByAgeReturnsCorrectList() {
+        // TODO: need to add this test w/Predicate
+    }
+
+    @Test
+    public void testFindTopProgrammersReturnsTopTwoSalaried() {
+        Comparator<Programmer> sortBySalaryDescending = Collections.reverseOrder(Comparator.comparingInt(Programmer::getSalary));
         Predicate<Programmer> maleProgrammers = (programmer -> programmer.getGender().equals("male"));
-        List<Programmer> topTwo = utils.findTopProgrammers(this.javaProgrammers, maleProgrammers, reverseSort, 2);
-        String firstNames = utils.returnFirstNamesOnlyAsString(topTwo);
-        assertThat(firstNames, equalTo("Tim Jeremiah"));
+        List<Programmer> topTwo = utils.findTopProgrammers(this.javaProgrammers, maleProgrammers, sortBySalaryDescending, 2);
+        assertThat(utils.returnFirstNamesOnlyAsString(topTwo), equalTo("Tim Jeremiah"));
     }
 
     @Test
     public void testFindTopTwoCheapestSalariedProgrammers() {
-        Comparator<Programmer> reverseSort = Comparator.comparingInt(Programmer::getSalary);
+        Comparator<Programmer> sortBySalaryAscending = Comparator.comparingInt(Programmer::getSalary);
         Predicate<Programmer> maleProgrammers = (programmer -> programmer.getJob().equals("Java programmer"));
-        List<Programmer> topTwo = utils.findTopProgrammers(this.javaProgrammers, maleProgrammers, reverseSort, 2);
-        String firstNames = utils.returnFirstNamesOnlyAsString(topTwo);
-        assertThat(firstNames, equalTo("Aaron Terry"));
+        List<Programmer> topTwo = utils.findTopProgrammers(this.javaProgrammers, maleProgrammers, sortBySalaryAscending, 2);
+        assertThat(utils.returnFirstNamesOnlyAsString(topTwo), equalTo("Aaron Terry"));
     }
 
     @Test
