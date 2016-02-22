@@ -10,7 +10,7 @@ import java.util.*;
 import java.util.function.*;
 
 import static junit.framework.TestCase.assertFalse;
-import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -23,25 +23,23 @@ public class Java8MiscTests {
         ScriptEngine engine = engineManager.getEngineByName("JavaScript");
         System.out.println(engine.getClass().getName());
         double result = (double) engine.eval(" function f() { return 1; }; f() + 1;");
-        assertThat(result, equalTo(2.0));
-        System.out.println("Result: " + engine.eval(" function f() { return 1; }; f() + 1;"));
+        assertThat(result, is(2.0));
     }
 
     @Test
     public void testComparator() {
         List<String> strings = Arrays.asList("C", "a", "A", "b");
-        System.out.println(strings);
         Collections.sort(strings, String::compareToIgnoreCase);
-        System.out.println(strings);
+        assertThat(strings, is(Arrays.asList("a", "A","b", "C")));
     }
 
     @Test
     public void optionalScenarioMapWorks() {
         Optional<Programmer> programmer = Optional.of(new Programmer());
-        assertThat(programmer.isPresent(), equalTo(true));
-        assertThat(programmer.map(Programmer::getFirstName).orElse("None"), equalTo("None"));
+        assertThat(programmer.isPresent(), is(true));
+        assertThat(programmer.map(Programmer::getFirstName).orElse("None"), is("None"));
         programmer.get().setFirstName("TestFirstName");
-        assertThat(programmer.map(Programmer::getFirstName).orElse("None"), equalTo("TestFirstName"));
+        assertThat(programmer.map(Programmer::getFirstName).orElse("None"), is("TestFirstName"));
     }
 
     @Test
@@ -49,15 +47,15 @@ public class Java8MiscTests {
         Optional<Programmer> optProgrammer = Optional.of(new Programmer());
         Optional<Address> optAddress = Optional.of(new Address());
 
-        assertThat(optProgrammer.map(Programmer::getAddress).orElse(null), equalTo(Optional.empty()));
+        assertThat(optProgrammer.map(Programmer::getAddress).orElse(null), is(Optional.empty()));
 
         optProgrammer.get().setAddress(optAddress);
         String state = optProgrammer.flatMap(Programmer::getAddress).map(Address::getState).orElse("NA");
-        assertThat(state, equalTo("NA"));
+        assertThat(state, is("NA"));
 
         optAddress.get().setState("PA");
         state = optProgrammer.flatMap(Programmer::getAddress).map(Address::getState).orElse("NA");
-        assertThat(state, equalTo("PA"));
+        assertThat(state, is("PA"));
 
         Predicate<Address> isInPA = (address -> address.getState().equals("PA"));
         assertThat(optAddress.filter(isInPA), not(Optional.empty()));
@@ -71,7 +69,7 @@ public class Java8MiscTests {
         optProgrammer.get().setAddress(optAddress);
         Predicate<Address> hasStatePA = (address -> "PA".equalsIgnoreCase(address.getState()));
         String state = optProgrammer.flatMap(Programmer::getAddress).filter(hasStatePA).map(Address::getState).orElse("Unk");
-        assertThat(state, equalTo("Unk"));
+        assertThat(state, is("Unk"));
     }
 
     public static List<String> greetFolks(Function<String, String> greeter) {
@@ -89,7 +87,7 @@ public class Java8MiscTests {
 
         StringBuffer resultString = new StringBuffer();
         greetings.forEach(greeting -> resultString.append(greeting));
-        assertThat(resultString.toString().trim(), equalTo("Hello Alice Hello Bob Hello Cathy"));
+        assertThat(resultString.toString().trim(), is("Hello Alice Hello Bob Hello Cathy"));
     }
 
     @Test
@@ -99,19 +97,19 @@ public class Java8MiscTests {
         for (String name : Arrays.asList("Alice", "Bob", "Cathy")) {
             doGreet.accept(name);  // tells consumer to do its method
         }
-        assertThat(buffer.toString().trim(), equalTo("Hello Alice Hello Bob Hello Cathy"));
+        assertThat(buffer.toString().trim(), is("Hello Alice Hello Bob Hello Cathy"));
     }
 
     @Test
     public void testBinaryOperator() {
         BinaryOperator<String> concat = (left, right) -> left + right;
-        assertThat(concat.apply("Hello ", "World"), equalTo("Hello World"));
+        assertThat(concat.apply("Hello ", "World"), is("Hello World"));
     }
 
     @Test
     public void testUnaryOperator() {
         UnaryOperator<String> upcase = str -> str.toUpperCase();
-        assertThat(upcase.apply("Hello"), equalTo("HELLO"));
+        assertThat(upcase.apply("Hello"), is("HELLO"));
     }
 
     @Test
@@ -137,7 +135,7 @@ public class Java8MiscTests {
     public void testComparableStringsReverseSortOrderUsingLambda() {
         List<String> stringList = Arrays.asList(new String[] { "Goodbye", "Hello" });
         stringList.sort( (x,y) -> y.compareToIgnoreCase(x) );
-        assertThat(stringify(stringList), equalTo("Hello Goodbye"));
+        assertThat(stringify(stringList), is("Hello Goodbye"));
     }
 
     @Test
@@ -145,7 +143,7 @@ public class Java8MiscTests {
         Comparator<String> stdSort = String::compareToIgnoreCase;
         List<String> stringList = Arrays.asList(new String[] { "Hello", "Goodbye" });
         stringList.sort(stdSort);
-        assertThat(stringify(stringList), equalTo("Goodbye Hello"));
+        assertThat(stringify(stringList), is("Goodbye Hello"));
     }
 
     @Test
@@ -153,8 +151,7 @@ public class Java8MiscTests {
         Comparator<String> reverseSort = Collections.reverseOrder(String::compareToIgnoreCase);
         List<String> stringList = Arrays.asList(new String[] { "Hello", "Goodbye" });
         stringList.sort(reverseSort);
-        assertThat(stringify(stringList), equalTo("Hello Goodbye"));
+        assertThat(stringify(stringList), is("Hello Goodbye"));
     }
-
 
 }

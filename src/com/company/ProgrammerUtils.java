@@ -43,9 +43,9 @@ public class ProgrammerUtils {
         return programmers;
     }
 
-    // TODO: Add in predicate for filtering
-    public Map<String, List<Programmer>> groupProgrammersByGender(List<Programmer> programmers) {
-        return programmers.stream().collect(Collectors.groupingBy(Programmer::getGender));
+    public Map<String, List<Programmer>> groupProgrammersBy(List<Programmer> programmers, Predicate<Programmer> predicate,
+                                                                  Function<Programmer,String> functionToCall) {
+        return programmers.stream().filter(predicate).collect(Collectors.groupingBy(functionToCall));
     }
 
     public int totalSalaryForProgrammers(List<Programmer> programmers, Predicate<Programmer> predicate) {
