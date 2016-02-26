@@ -20,7 +20,6 @@ public class Java8MiscTests {
     public void testJavaScriptEngine() throws ScriptException {
         ScriptEngineManager engineManager = new ScriptEngineManager();
         ScriptEngine engine = engineManager.getEngineByName("JavaScript");
-        System.out.println(engine.getClass().getName());
         double result = (double) engine.eval(" function f() { return 1; }; f() + 1;");
         assertThat(result, is(2.0));
     }

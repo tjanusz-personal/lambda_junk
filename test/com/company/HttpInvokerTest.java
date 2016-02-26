@@ -29,7 +29,7 @@ public class HttpInvokerTest {
                         + "}";
         HttpInvoker httpInvoker = new HttpInvoker(stubHttp);
         String result = httpInvoker.getHttp("http://www.google.com");
-        System.out.println(result);
+//        System.out.println(result);
     }
 
 

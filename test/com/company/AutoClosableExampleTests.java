@@ -1,10 +1,7 @@
 package com.company;
 
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.ExpectedException;
 
 import java.io.ByteArrayOutputStream;
@@ -37,7 +34,7 @@ public class AutoClosableExampleTests {
 
     @After
     public void cleanUpStreams() {
-        System.setOut(null);
+        System.setOut(System.err);
     }
 
     @Test
