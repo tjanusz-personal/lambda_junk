@@ -20,18 +20,25 @@ import static org.hamcrest.junit.MatcherAssert.assertThat;
  */
 public class ProgrammerUtilsTest {
     private ProgrammerUtils utils;
-    List<Programmer> javaProgrammers = new ArrayList<Programmer>() {
-        {
-            add(new Programmer("Aaron", "Kuehler", "Java programmer", "male", 43, 1000));
-            add(new Programmer("Terry", "Finn", "Java programmer", "female", 23, 1500));
-            add(new Programmer("Jeremiah", "Lusby", "Java programmer", "male", 33, 1500));
-            add(new Programmer("Tim", "Janusz", "Java programmer", "male", 33, 2000));
-        }
-    };
+
+    List<Programmer> javaProgrammers;
+
+    private List<Programmer> getHardcodedJavaProgrammerList() {
+        return new ArrayList<Programmer>() {
+            {
+                add(new Programmer("Aaron", "Kuehler", "Java programmer", "male", 43, 1000));
+                add(new Programmer("Terry", "Finn", "Java programmer", "female", 23, 1500));
+                add(new Programmer("Jeremiah", "Lusby", "Java programmer", "male", 33, 1500));
+                add(new Programmer("Tim", "Janusz", "Java programmer", "male", 33, 2000));
+            }
+        };
+    }
 
     @Before
     public void setUp() {
+
         utils = new ProgrammerUtils();
+        this.javaProgrammers = getHardcodedJavaProgrammerList();
     }
 
     @Test
@@ -95,9 +102,17 @@ public class ProgrammerUtilsTest {
     }
 
     @Test
-    public void increasesProgrammerSalaryBy100DollarsModifiesProgrammersInListCorrectly() {
-        List<Programmer> programmers = utils.increaseProgrammerSalaryByAmount(javaProgrammers, 100);
+    public void increasesProgrammerSalaryByAmountUsingForEachModifiesProgrammersInListCorrectly() {
+        List<Programmer> programmers = utils.increaseProgrammerSalaryByAmountUsingForEach(javaProgrammers, 100);
         List<Integer> expectedAmounts = Arrays.asList(new Integer[] { 1100, 1600, 1600, 2100 });
+        List<Integer> actualAmounts = programmers.stream().map(Programmer::getSalary).collect(Collectors.toList());
+        assertThat(expectedAmounts, is(actualAmounts));
+    }
+
+    @Test
+    public void increasesProgrammerSalaryByAmountUsingReplaceAllModifiesProgrammersInListCorrectly() {
+        List<Programmer> programmers = utils.increaseProgrammerSalaryByAmountUsingReplaceAll(javaProgrammers, 200);
+        List<Integer> expectedAmounts = Arrays.asList(new Integer[] { 1200, 1700, 1700, 2200 });
         List<Integer> actualAmounts = programmers.stream().map(Programmer::getSalary).collect(Collectors.toList());
         assertThat(expectedAmounts, is(actualAmounts));
     }
@@ -198,4 +213,14 @@ public class ProgrammerUtilsTest {
         int ageTotal = utils.totalForProgrammers(this.javaProgrammers, null, Programmer::getAge);
         assertThat(ageTotal, is(132));
     }
+
+    @Test
+    public void removeMaleProgrammersExample() {
+        List<Programmer> allJavaProgrammers = this.getHardcodedJavaProgrammerList();
+        assertThat(allJavaProgrammers.size(), is(4));
+        allJavaProgrammers.removeIf( (programmer -> programmer.getGender().equalsIgnoreCase("male")));
+        assertThat(allJavaProgrammers.size(), is(1));
+    }
+
+
 }

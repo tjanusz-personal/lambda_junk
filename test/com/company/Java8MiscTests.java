@@ -1,19 +1,18 @@
 package com.company;
 
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import java.util.*;
-import java.util.function.*;
+import java.util.function.Predicate;
 
-import static junit.framework.TestCase.assertFalse;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 public class Java8MiscTests {
 
@@ -34,7 +33,7 @@ public class Java8MiscTests {
     }
 
     @Test
-    public void optionalScenarioMapWorks() {
+    public void testOptionalScenarioMapWorks() {
         Optional<Programmer> programmer = Optional.of(new Programmer());
         assertThat(programmer.isPresent(), is(true));
         assertThat(programmer.map(Programmer::getFirstName).orElse("None"), is("None"));
@@ -43,7 +42,7 @@ public class Java8MiscTests {
     }
 
     @Test
-    public void optionalScenarioFlatMapWorks() {
+    public void testOptionalScenarioFlatMapWorks() {
         Optional<Programmer> optProgrammer = Optional.of(new Programmer());
         Optional<Address> optAddress = Optional.of(new Address());
 
@@ -62,7 +61,7 @@ public class Java8MiscTests {
     }
 
     @Test
-    public void optionalFilterExampleWorks() {
+    public void testOptionalFilterExampleWorks() {
         Optional<Programmer> optProgrammer = Optional.of(new Programmer());
         Optional<Address> optAddress = Optional.of(new Address());
         optAddress.get().setState("NJ");
@@ -72,86 +71,24 @@ public class Java8MiscTests {
         assertThat(state, is("Unk"));
     }
 
-    public static List<String> greetFolks(Function<String, String> greeter) {
-        List<String> greetings = new ArrayList<String>();
-        for(String name : Arrays.asList("Alice", "Bob", "Cathy")) {
-            greetings.add(greeter.apply(name));
-        }
-        return greetings;
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
+    @Test
+    public void testObjectsThrowsNullPointerExWithCorrectText() {
+        Object theObject = null;
+        expectedException.expect(NullPointerException.class);
+        expectedException.expectMessage("Null Object");
+        Objects.requireNonNull(theObject, "Null Object");
     }
 
     @Test
-    public void testLambdaBiFunctions() {
-        BiFunction<String, String, String> concat = (a, b) -> a + b;
-        List<String> greetings = greetFolks(whom -> concat.apply(" Hello ", whom));
-
-        StringBuffer resultString = new StringBuffer();
-        greetings.forEach(greeting -> resultString.append(greeting));
-        assertThat(resultString.toString().trim(), is("Hello Alice Hello Bob Hello Cathy"));
+    public void testObjectsToStringReturnsNullStringOnNullObject() {
+        Object theObject = null;
+        assertThat(Objects.toString(theObject), is("null"));
+        theObject = new Object();
+        assertThat(Objects.toString(theObject), containsString("java.lang.Object"));
     }
 
-    @Test
-    public void testConsumerFunctionInterface() {
-        StringBuffer buffer = new StringBuffer();
-        Consumer<String> doGreet = name -> buffer.append(" Hello " + name);
-        for (String name : Arrays.asList("Alice", "Bob", "Cathy")) {
-            doGreet.accept(name);  // tells consumer to do its method
-        }
-        assertThat(buffer.toString().trim(), is("Hello Alice Hello Bob Hello Cathy"));
-    }
-
-    @Test
-    public void testBinaryOperator() {
-        BinaryOperator<String> concat = (left, right) -> left + right;
-        assertThat(concat.apply("Hello ", "World"), is("Hello World"));
-    }
-
-    @Test
-    public void testUnaryOperator() {
-        UnaryOperator<String> upcase = str -> str.toUpperCase();
-        assertThat(upcase.apply("Hello"), is("HELLO"));
-    }
-
-    @Test
-    public void testPredicateSingleArgument() {
-        Predicate<String> notNullOrEmpty = s -> (s != null) && (s.length() > 0);
-        assertTrue(notNullOrEmpty.test("Hello"));
-        assertFalse(notNullOrEmpty.test(""));
-    }
-
-    @Test
-    public void testBiPredicateTwoArguments() {
-        BiPredicate<String, String> notNull = (string1, string2) -> (string1 != null) && (string2 != null);
-        assertTrue(notNull.test("","Hello"));
-        assertFalse(notNull.test(null, null));
-    }
-
-    private String stringify(List<String> stringList) {
-        String longString = stringList.stream().map(Object::toString).reduce((t,u) -> t + " " + u).get();
-        return longString;
-    }
-
-    @Test
-    public void testComparableStringsReverseSortOrderUsingLambda() {
-        List<String> stringList = Arrays.asList(new String[] { "Goodbye", "Hello" });
-        stringList.sort( (x,y) -> y.compareToIgnoreCase(x) );
-        assertThat(stringify(stringList), is("Hello Goodbye"));
-    }
-
-    @Test
-    public void testComparableStringsSortOrderUsingComparator() {
-        Comparator<String> stdSort = String::compareToIgnoreCase;
-        List<String> stringList = Arrays.asList(new String[] { "Hello", "Goodbye" });
-        stringList.sort(stdSort);
-        assertThat(stringify(stringList), is("Goodbye Hello"));
-    }
-
-    @Test
-    public void testComparableStringsReverseSortOrderUsingComparator() {
-        Comparator<String> reverseSort = Collections.reverseOrder(String::compareToIgnoreCase);
-        List<String> stringList = Arrays.asList(new String[] { "Hello", "Goodbye" });
-        stringList.sort(reverseSort);
-        assertThat(stringify(stringList), is("Hello Goodbye"));
-    }
 
 }

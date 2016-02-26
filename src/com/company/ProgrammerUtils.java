@@ -38,8 +38,16 @@ public class ProgrammerUtils {
         return firstNames;
     }
 
-    public List<Programmer> increaseProgrammerSalaryByAmount(List<Programmer> programmers, int amountToIncrease) {
+    public List<Programmer> increaseProgrammerSalaryByAmountUsingForEach(List<Programmer> programmers, int amountToIncrease) {
         programmers.forEach( (p) -> p.setSalary(p.getSalary() + amountToIncrease));
+        return programmers;
+    }
+
+    public List<Programmer> increaseProgrammerSalaryByAmountUsingReplaceAll(List<Programmer> programmers, int amountToIncrease) {
+        programmers.replaceAll( (programmer) -> {
+            programmer.setSalary(programmer.getSalary() + amountToIncrease);
+            return programmer;
+        });
         return programmers;
     }
 

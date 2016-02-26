@@ -7,6 +7,16 @@ public class Programmer {
     private int salary, age;
     private Optional<Address> address = Optional.empty();
 
+    public boolean isHighlyCompensated() {
+        return highlyCompensated;
+    }
+
+    public void setHighlyCompensated(boolean highlyCompensated) {
+        this.highlyCompensated = highlyCompensated;
+    }
+
+    private boolean highlyCompensated;
+
     public Programmer() { }
 
     public Programmer(String firstName, String lastName, String job, String gender, int age, int salary)       {
@@ -18,6 +28,13 @@ public class Programmer {
         this.salary = salary;
     }
 
+    public void determineHighlyCompensated() {
+        if (salary >= 50000) {
+            this.setHighlyCompensated(true);
+        } else {
+            this.setHighlyCompensated(false);
+        }
+    }
     public Optional<Address> getAddress() { return address; }
     public void setAddress(Optional<Address> address) { this.address = address; }
 
