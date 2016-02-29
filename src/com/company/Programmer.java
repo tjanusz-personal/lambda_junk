@@ -85,4 +85,31 @@ public class Programmer {
     public void setAge(int age) {
         this.age = age;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Programmer that = (Programmer) o;
+
+        if (salary != that.salary) return false;
+        if (age != that.age) return false;
+        if (!firstName.equals(that.firstName)) return false;
+        if (!lastName.equals(that.lastName)) return false;
+        if (!job.equals(that.job)) return false;
+        return gender.equals(that.gender);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = firstName.hashCode();
+        result = 31 * result + lastName.hashCode();
+        result = 31 * result + job.hashCode();
+        result = 31 * result + gender.hashCode();
+        result = 31 * result + salary;
+        result = 31 * result + age;
+        return result;
+    }
 }

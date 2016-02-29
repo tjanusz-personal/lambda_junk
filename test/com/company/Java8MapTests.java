@@ -163,4 +163,15 @@ public class Java8MapTests {
         assertThat(stringIntegerMap.get("Two"), equalTo(32));
     }
 
+    private List<Programmer> getHardcodedJavaProgrammerList() {
+        return new ArrayList<Programmer>() {
+            {
+                add(new Programmer("Aaron", "Kuehler", "Java programmer", "male", 43, 1000));
+                add(new Programmer("Terry", "Finn", "Java programmer", "female", 23, 1500));
+                add(new Programmer("Jeremiah", "Lusby", "Java programmer", "male", 33, 1500));
+                add(new Programmer("Tim", "Janusz", "Java programmer", "male", 33, 2000));
+            }
+        };
+    }
+
 }
