@@ -80,7 +80,7 @@ public class Java8DateTimeTests {
 
         // Migrate same time to CST
         ZonedDateTime cstDateTime = zonedDateTime.withZoneSameInstant(this.CST);
-        assertThat(cstDateTime.getHour(), is(currentHour - 2));
+        assertThat(cstDateTime.getHour(), is(currentHour - 3));
 
         // Migrate same time to PST
         ZonedDateTime pstDateTime = zonedDateTime.withZoneSameInstant(this.PST);
